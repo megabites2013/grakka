@@ -19,11 +19,13 @@ public class SpringActorProducer implements IndirectActorProducer {
 
   @Override
   public Actor produce() {
+    println "produce() called for actorBeanName: ${actorBeanName}"
     return (Actor) applicationContext.getBean(actorBeanName);
   }
 
   @Override
   public Class<? extends Actor> actorClass() {
+    println "actorClass() called for actorBeanName: ${actorBeanName}"
     return (Class<? extends Actor>) applicationContext.getType(actorBeanName);
   }
 }

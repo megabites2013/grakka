@@ -33,6 +33,7 @@ ext {
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    mavenCentral()
 }
 
 dependencyManagement {
@@ -56,6 +57,7 @@ dependencies {
     compile "org.grails:grails-plugin-async"
     compile "org.grails:grails-web-boot"
     compile "com.typesafe.akka:akka-actor_2.11:2.4.0"
+    compile "javax.inject:javax.inject:1"
 
 
     compile "org.grails.plugins:hibernate"

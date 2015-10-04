@@ -8,7 +8,8 @@ import akka.actor.Props;
 import org.springframework.context.ApplicationContext;
 
 /**
- * SpringExtension is responsible for
+ * SpringExtension is responsible for helping Spring create Akka actor instances,
+ * optionally injected with other beans from the Spring Context.
  *
  * https://raw.githubusercontent.com/typesafehub/activator-akka-java-spring/master/src/main/java/sample/SpringExtension.java
  */
@@ -51,8 +52,7 @@ class SpringExtension extends
      * @return a Props that will create the named actor bean using Spring
      */
     public Props props(String actorBeanName) {
-      return Props.create(SpringActorProducer.class,
-          applicationContext, actorBeanName);
+      return Props.create(SpringActorProducer.class, applicationContext, actorBeanName);
     }
   }
 }
