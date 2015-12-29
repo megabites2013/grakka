@@ -1,6 +1,7 @@
 package grakka.search
 
 import akka.actor.UntypedActor
+import groovy.transform.Immutable
 import org.springframework.context.annotation.Scope
 
 import javax.inject.Inject
@@ -13,13 +14,10 @@ import javax.inject.Named
 @Scope("prototype")
 class SearchEngineActor extends UntypedActor {
 
+  @Immutable
   public static class PerformQuery {
-    private final String id
-    private final String criteria
-    PerformQuery(String id, String criteria){
-      this.id = id
-      this.criteria = criteria
-    }
+    String id
+    String criteria
   }
 
   // the service that will be automatically injected
