@@ -3,6 +3,9 @@ grails:
     profile: web-api
     codegen:
         defaultPackage: grakka
+    # specifying servlet 3.0 enables async request-handling: http://grails.github.io/grails-doc/3.0.10/guide/async.html#asyncRequests
+    servlet:
+        version: 3.0
 info:
     app:
         name: '@info.app.name@'

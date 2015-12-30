@@ -4,6 +4,7 @@ import akka.actor.ActorRef
 import akka.actor.ActorSystem
 import akka.actor.Props
 import akka.util.Timeout
+import grails.async.Promises
 import grails.core.GrailsApplication
 import grakka.search.SearchEngineActor
 import scala.concurrent.Await
@@ -43,14 +44,16 @@ class SearchController {
         def query = new SearchEngineActor.PerformQuery(searchId, "some query criteria")
         Future<Object> futureResults = ask(searchEngineRef, query, TIMEOUT_3_SECONDS)
 
-        def searchResults = Await.result(futureResults, DURATION_3_SECONDS)
-        println("received: " + searchResults)
+        Promises.task {
+            def searchResults = Await.result(futureResults, DURATION_3_SECONDS)
+            println("received: " + searchResults)
 
-        actorSystem.stop(searchEngineRef)
+            actorSystem.stop(searchEngineRef)
 
-        render(contentType: 'application/json') {
-            id = searchId
-            results = searchResults
+            render(contentType: 'application/json') {
+                id = searchId
+                results = searchResults
+            }
         }
     }
 }
