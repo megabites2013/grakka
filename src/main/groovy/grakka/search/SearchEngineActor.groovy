@@ -1,11 +1,15 @@
 package grakka.search
 
 import akka.actor.UntypedActor
+import akka.dispatch.Futures
+import akka.pattern.Patterns
 import groovy.transform.Immutable
 import org.springframework.context.annotation.Scope
+import scala.concurrent.Future
 
 import javax.inject.Inject
 import javax.inject.Named
+import java.util.concurrent.Callable
 
 /**
  * SearchEngineActor is responsible for interacting with the search engine.
@@ -32,7 +36,14 @@ class SearchEngineActor extends UntypedActor {
   public void onReceive(Object message) throws Exception {
     if (message instanceof PerformQuery) {
       PerformQuery query = message
-      getSender().tell(searchEngine.search(query.criteria), getSelf());
+      Callable<List<String>> search = new Callable<List<String>>() {
+        @Override
+        List<String> call() throws Exception {
+          return searchEngine.search(query.criteria)
+        }
+      }
+      Future<List<String>> futureSearchResults = Futures.future(search, this.context.dispatcher())
+      Patterns.pipe(futureSearchResults, context().dispatcher()).to(sender, self)
     } else {
       unhandled(message);
     }
