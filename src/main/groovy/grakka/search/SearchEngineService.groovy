@@ -17,7 +17,6 @@ class SearchEngineService {
    */
   List<String> search(String query) {
       println "searching with criteria: ${query}"
-      sleep(100)
       return ["a random search result: ${Math.abs(random.nextInt(100000))}"]
     }
 }
