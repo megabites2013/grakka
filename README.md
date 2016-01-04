@@ -16,6 +16,6 @@ The availability of bi-directional injection of resources enables the applicatio
 
 There are few classes that collaborate to implement the integration, all in grails-app/utils/conf:
   
-* [AkkaSpringConfiguration](grails-app/utils/conf/AkkaSpringConfiguration.groovy) - a Spring context definition that defines the Akka actor system as a Spring bean, supplementing the standard Spring context defined by Grails by importing the context in [resources.groovy](grakka/grails-app/conf/spring/resources.groovy)
+* [AkkaSpringConfiguration](grails-app/utils/conf/AkkaSpringConfiguration.groovy) - a Spring context definition that defines the Akka actor system as a Spring bean, supplementing the standard Spring context defined by Grails by importing the context in [resources.groovy](grails-app/conf/spring/resources.groovy)
 * [SpringExtension](grails-app/utils/conf/SpringExtension.groovy) - an extension to the Akka actor system that enables actor creation to be performed by the SpringActorProducer 
 * [SpringActorProducer](grails-app/utils/conf/SpringActorProducer.groovy) - an implementation of Akka's [IndirectActorProducer](http://doc.akka.io/api/akka/2.4.0/index.html#akka.actor.IndirectActorProducer) that delegates actor creation to Spring 
