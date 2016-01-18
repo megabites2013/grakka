@@ -8,7 +8,7 @@ class UrlMappings {
         }
 
         "/"(controller: 'index')
-        "/search"(controller: 'search')
+        "/number"(controller: 'number')
         "500"(controller: 'InternalServerError')
         "404"(controller: 'NotFound')
     }

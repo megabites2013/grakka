@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 import static akka.pattern.Patterns.ask
 import static conf.SpringExtension.SpringExtProvider
 
-class SearchController {
+class NumberController {
 
     static final FiniteDuration DURATION_3_SECONDS = FiniteDuration.create(3, TimeUnit.SECONDS)
     static final TIMEOUT_3_SECONDS = Timeout.durationToTimeout(DURATION_3_SECONDS)
@@ -24,7 +24,7 @@ class SearchController {
     ActorSystem actorSystem
     GrailsApplication grailsApplication
 
-    def index() {
+    def random() {
 //        some print statements to help debug things
 //        println("actorSystem: ${actorSystem}")
 //        println("beans: ${grailsApplication.mainContext.beanDefinitionNames}")
