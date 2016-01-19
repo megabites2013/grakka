@@ -7,8 +7,8 @@ in Typesafe's [activator-akka-java-spring demo](https://github.com/typesafehub/a
 
 The key of the design is that the Spring context is responsible for creating both Grails objects and Akka actors.  Since Spring is responsible for object creation a number of nice features are available automatically:
 
-* Grails objects may be injected with Akka objects, e.g. [SearchController](grails-app/controllers/grakka/SearchController.groovy)
-* Akka actors may be injected with Grails objects, e.g. [SearchEngineActor](src/main/groovy/grakka/search/SearchEngineActor.groovy) 
+* Grails objects may be injected with Akka objects, e.g. [NumberController](grails-app/controllers/grakka/NumberController.groovy) is injected with the ActorSystem
+* Akka actors may be injected with Grails objects, e.g. [NumberActor](src/main/groovy/grakka/number/NumberActor.groovy) is injected with a Grails Service 
 
 The availability of bi-directional injection of resources enables the application designer to decide which way(s) dependencies should flow through the application.
 
