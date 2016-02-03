@@ -5,6 +5,8 @@ Grakka is a simple demonstration application showing how to integrate Grails 3.x
 Grakka integrates Grails and Akka following the same Spring context integration approach demonstrated 
 in Typesafe's [activator-akka-java-spring demo](https://github.com/typesafehub/activator-akka-java-spring).
 
+The QualiMente blog post [Integrating Grails and Akka](https://www.qualimente.com/2016/01/19/integrating-grails-and-akka/), provides an in-depth explanation of the integration.
+
 The key of the design is that the Spring context is responsible for creating both Grails objects and Akka actors.  Since Spring is responsible for object creation a number of nice features are available automatically:
 
 * Grails objects may be injected with Akka objects, e.g. [NumberController](grails-app/controllers/grakka/NumberController.groovy) is injected with the ActorSystem
